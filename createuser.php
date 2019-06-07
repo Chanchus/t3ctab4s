@@ -1,11 +1,11 @@
 <?php require 'header.php' ;
 
-if (!(isset($_SESSION["userName"])))
+if (!(isset($_SESSION["userID"])))
     {
         header("Location: login.php");
     }
 
-if ($_SESSION["dept"]!="Administrator")
+if ($_SESSION["dept"]!="4")
     {
         header("Location: mainpage.php");
     }   
@@ -49,8 +49,8 @@ if ($_SESSION["dept"]!="Administrator")
         </div>
 
         <div class="form-group">
-            <label><h4> Email</h4> </label>
-            <input type="text" class="form-control" placeholder="Add Email">
+            <label><h4> Username</h4> </label>
+            <input type="text" class="form-control" placeholder="Enter Username">
         </div>
         
         <div class="form-group">

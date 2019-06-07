@@ -7,26 +7,26 @@ if (isset($_POST['login-submit']))
 
     
     
-    $email = $_POST['emailId'];
+    $userID = $_POST['userId'];
     $password = $_POST['pwd'];
 
 
-    if(empty($email) || empty($password))
+    if(empty($userID) || empty($password))
     {
         header("Location: login.php?error=emptyfields");
         exit();
     }
-    else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+    /*else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
     {
         
         header("Location: login.php?error=invalidmail");
         echo "<b> INVALID EMAIL </b>";
         exit();
-    }
+    }*/
 
     else
     {
-        $result = "SELECT * FROM Employee WHERE Email="."'".$email."' AND Password="."'".$password."'" ;
+        /*$result = "SELECT * FROM Employee WHERE Email="."'".$email."' AND Password="."'".$password."'" ;
 
         $cliente;
         $stmt = sqlsrv_query( $conn_sis, $result );
@@ -45,8 +45,8 @@ if (isset($_POST['login-submit']))
         {
 
             session_start();
-            $_SESSION["userName"] = $row['Name']; 
-            $_SESSION["dept"] = $row['Department']; 
+            $_SESSION["userID"] = $row['tced']; 
+            $_SESSION["dept"] = $row['trol']; 
 
             header("Location: mainpage.php");
         }
@@ -54,7 +54,30 @@ if (isset($_POST['login-submit']))
         
 
         sqlsrv_free_stmt( $stmt); 
+        */
 
+        $url = "https://tabaswebapi.azurewebsites.net/getempleado/".$userID;
+
+        $eljson = file_get_contents($url);
+
+
+        $array = json_decode($eljson, true);
+        
+
+        if($array != NULL)
+        {
+            session_start();
+            $_SESSION["userID"] = $array['tced']; 
+            $_SESSION["dept"] = $array['trol']; 
+
+            header("Location: mainpage.php");
+        }
+        else{
+            header("Location: login.php?error=nouser");
+            exit();
+        }
+        
+        
 
 
     }

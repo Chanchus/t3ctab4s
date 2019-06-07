@@ -19,11 +19,11 @@
         }
         elseif ($_GET['error']=="nouser")
         {
-            $errormsg = "Invalid email or password!";
+            $errormsg = "Invalid ID or password!";
         }
-        elseif ($_GET['error']=="invalidmail")
+        elseif ($_GET['error']=="invalidID")
         {
-            $errormsg = "Thats an invalid email!";
+            $errormsg = "Thats an invalid ID!";
         }
     }
 
@@ -50,7 +50,7 @@
 
                     <form class="col-12" action="login-ver.php" method="post">
                         <div class="form-group" id="emailinput">
-                            <input type="text" name="emailId" class="form-control" placeholder="Email">
+                            <input type="text" name="userId" class="form-control" placeholder="User ID">
                         </div>
                         <div class="form-group" id="emailinput">
                             <input type="password" name="pwd" class="form-control" placeholder="Password">
