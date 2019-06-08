@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['addescala']))
+if (isset($_POST['add-escala']))
 {
     
     
@@ -11,12 +11,12 @@ if (isset($_POST['addescala']))
     $AirID = $_POST['planeid'];
     $FlightID = $_POST['flightid'];
     $miles = 100;
-    
+    $num = $_POST['numero'];
 
     
 
 
-    if(empty($Ddate) || empty($Adate) || $DepA=="" || $ArrA=="" || $AirID=="" || $FlightID=="")
+    if(empty($Ddate) || empty($Adate))
     {
         header("Location: mainpage.php?error=emptyfieldsflight");
         exit();
@@ -24,21 +24,21 @@ if (isset($_POST['addescala']))
 
     else{
 
-
+        
 
         
 
-        $array = null;
+        
 
 
-        if ($array== null){
+        if (true){
             
             $data = array(
+                'Numero' => $num,
                 'Fsalida' => $Ddate,
                 'FLlegada' => $Adate,
                 'VueloID' => $FlightID,
                 'AvionID' => $AirID,
-                'VueloID' => $capacity,
                 'ASalida' => $DepA,
                 'ALlegada' => $ArrA,
                 'Millas' => $miles

@@ -75,12 +75,12 @@
 
                 <div class="form-group">
                     <label><h6>Cart ID</h6> </label>
-                    <input type="text" name="addcart-id"  class="form-control" placeholder="Enter First Name">
+                    <input type="text" name="addcart-id"  class="form-control" placeholder="">
                 </div>
 
                 <div class="form-group">
                     <label><h6>Model</h6> </label>
-                    <input type="text" name="addcart-model"  class="form-control" placeholder="Enter Last Name">
+                    <input type="text" name="addcart-model"  class="form-control" placeholder="">
                 </div>
                 
                 <div class="form-group">
@@ -139,17 +139,17 @@
 
                 <div class="form-group">
                     <label><h6>Brand</h6> </label>
-                    <input type="text" name="addbrand-brand" class="form-control" placeholder="Enter First Name">
+                    <input type="text" name="addbrand-brand" class="form-control" placeholder="">
                 </div>
 
                 <div class="form-group">
                     <label><h6>Model</h6> </label>
-                    <input type="text" name="addbrand-model"  class="form-control" placeholder="Enter Last Name">
+                    <input type="text" name="addbrand-model"  class="form-control" placeholder="">
                 </div>
 
                 <div class="form-group">
                     <label><h6>Capacity</h6> </label>
-                    <input type="text" name="addbrand-capacity"  class="form-control" placeholder="Enter Last Name">
+                    <input type="text" name="addbrand-capacity"  class="form-control" placeholder="">
                 </div>
                 
                 <?php
@@ -242,16 +242,19 @@
             <h4> Assign Airplane to Flight </h4>
             <form action="addescala.php" method="post">
 
-                    
+                <div class="form-group" >
+                    <label><h6>Number </h6></label>
+                    <input type="text" name="numero"  class="form-control" placeholder="">
+                </div> 
 
-                <div class="form-group" name="departuredate">
-                    <label><h6>Departure Date </h6> <h1 style=font-size:15px>(m/dd/yyyy hh:mm:ss AM/PM)</h1> </label>
-                    <input type="text" name="addbrand-model"  class="form-control" placeholder="Enter Last Name">
+                <div class="form-group" >
+                    <label><h6>Departure Date </h6> <h1 style=font-size:15px>(yyyy-mm-dd hh:mm)</h1> </label>
+                    <input type="text" name="departuredate"  class="form-control" placeholder="">
                 </div>
                 
-                <div class="form-group" name="arrivaldate">
-                    <label><h6>Arrival Date</h6> <h1 style=font-size:15px>(m/dd/yyyy hh:mm:ss AM/PM)</h1> </label>
-                    <input type="text" name="addbrand-model"  class="form-control" placeholder="Enter Last Name">
+                <div class="form-group" >
+                    <label><h6>Arrival Date</h6> <h1 style=font-size:15px>(yyyy-mm-dd hh:mm)</h1> </label>
+                    <input type="text" name="arrivaldate"  class="form-control" placeholder="">
                 </div>
                 
                 <div class="form-group">
@@ -390,7 +393,7 @@
 
                 </div>
         
-                <button type="submit" name="addescala" class="btn btn-info"> Assign </button>
+                <button type="submit" name="add-escala" class="btn btn-info"> Assign </button>
             
 
         </div>
@@ -437,7 +440,7 @@
                     while($index < sizeof($array))
                     {
                         echo '<div class="container" style="background-color:#444444; margin-bottom: 10px; padding: 5px;">';
-                        //echo "Num: ". $array[$index]['Numero'] ."<br>";
+                        echo "Num: ". $array[$index]['Numero'] ."<br>";
                         echo "Flight ID: ". $array[$index]['VueloID'] ."<br>";
                         echo "Plane ID: ". $array[$index]['AvionID'] ."<br>";
                         echo "Departure/Arrival: ". $array[$index]['ASalida'] ."/".$array[$index]['ALlegada'] ."<br>";
