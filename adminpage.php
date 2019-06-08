@@ -6,6 +6,7 @@
 
     $errormsgcart = "";
     $errormsgbrand = "";
+    $errormsgflight = "";
 
     if (isset($_GET['error']))
     {
@@ -29,6 +30,10 @@
         {
             $errormsgbrand = "The model already exists!";
         }
+        elseif ($_GET['error']=="emptyfieldsflight")
+        {
+            $errormsgflight = "There are empty fields!";
+        }
         
     }
 
@@ -46,7 +51,7 @@
 
 <div class="container">
     
-    <h1 style=font-size:80px> Overview </h1>
+    <h1 style=font-size:60px> Overview | Administrator </h1>
     
     <br><br>
 
@@ -216,17 +221,297 @@
 
 
 
-<div class="container">
-<div class="jumbotron text-center">
-    <!-- <div class="container"> -->
-        <h1> welcome to my haus</h1>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-        </p>
-        <a href="#" class="btn btn-primary"> read more</a>
-    <!-- </div> -->
+<?php /////////////////////////////////////////////
+
+      //      FLIGHTS
+      /////////////////////////////////////////////
+?>
+
+
+
+
+<div class="container" style="margin-top:20px;" id="flights">
+<h1> Flights</h1>  <hr style="border-color:#aaaaaa;">
+    <div class="row">
+        
+        
+        
+        <div class="col-sm-4">
+          
+            
+            <h4> Assign Airplane to Flight </h4>
+            <form action="addescala.php" method="post">
+
+                    
+
+                <div class="form-group" name="departuredate">
+                    <label><h6>Departure Date </h6> <h1 style=font-size:15px>(m/dd/yyyy hh:mm:ss AM/PM)</h1> </label>
+                    <input type="text" name="addbrand-model"  class="form-control" placeholder="Enter Last Name">
+                </div>
+                
+                <div class="form-group" name="arrivaldate">
+                    <label><h6>Arrival Date</h6> <h1 style=font-size:15px>(m/dd/yyyy hh:mm:ss AM/PM)</h1> </label>
+                    <input type="text" name="addbrand-model"  class="form-control" placeholder="Enter Last Name">
+                </div>
+                
+                <div class="form-group">
+                    <label><h6>Departure Airport</h6> 
+                    <select class="form-control" name="departure">
+                        <option value=""> </option>
+
+                        <?php
+                            $url = "https://tabaswebapi.azurewebsites.net/getaeropuerto";
+
+                            $eljson = file_get_contents($url);
+
+
+                            $array = json_decode($eljson, true);
+                            $index = 0;
+        
+                    
+                            while($index < sizeof($array))
+                            {
+                                echo "<option value=".$array[$index]['Codigo'].">".$array[$index]['Codigo']."</option>";
+
+                    
+                                $index ++;
+
+                                
+                            }
+                            
+                        ?>    
+
+                    </select>
+                    
+
+                </div>
+
+                <div class="form-group">
+                    <label><h6>Arrival Airport</h6>
+                    <select class="form-control" name="arrival">
+                        <option value=""> </option>
+
+                        <?php
+                            $url = "https://tabaswebapi.azurewebsites.net/getaeropuerto";
+
+                            $eljson = file_get_contents($url);
+
+
+                            $array = json_decode($eljson, true);
+                            $index = 0;
+        
+                    
+                            while($index < sizeof($array))
+                            {
+                                echo "<option value=".$array[$index]['Codigo'].">".$array[$index]['Codigo']."</option>";
+
+                    
+                                $index ++;
+
+                                
+                            }
+                            
+                        ?>    
+
+                    </select>
+                    
+
+                </div>
+                <div class="form-group">
+                    <label><h6>Airplane ID</h6>
+                    <select class="form-control" name="planeid">
+                        <option value=""> </option>
+
+                        <?php
+                            $url = "https://tabaswebapi.azurewebsites.net/getavion";
+
+                            $eljson = file_get_contents($url);
+
+
+                            $array = json_decode($eljson, true);
+                            $index = 0;
+        
+                    
+                            while($index < sizeof($array))
+                            {
+                                echo "<option value=".$array[$index]['tid'].">".$array[$index]['tid']."</option>";
+
+                    
+                                $index ++;
+
+                                
+                            }
+                            
+                        ?>    
+
+                    </select>
+                    
+
+                </div>
+
+                <div class="form-group">
+                    <label><h6>Flight ID</h6>
+                    <select class="form-control" name="flightid">
+                        <option value=""> </option>
+
+                        <?php
+                            $url = "https://tabaswebapi.azurewebsites.net/getvuelo";
+
+                            $eljson = file_get_contents($url);
+
+
+                            $array = json_decode($eljson, true);
+                            $index = 0;
+        
+                    
+                            while($index < sizeof($array))
+                            {
+                                echo "<option value=".$array[$index]['tid'].">".$array[$index]['tid']."</option>";
+
+                    
+                                $index ++;
+
+                                
+                            }
+                            
+                        ?>    
+
+                    </select>
+                    
+                    
+                    <?php
+                    echo
+                    '<br> <p class="text-warning">';
+                    echo                
+                     "$errormsgflight </p>";
+
+                     ?>
+
+
+                </div>
+        
+                <button type="submit" name="addescala" class="btn btn-info"> Assign </button>
+            
+
+        </div>
+        <!-- <div class="col-sm-1"> -->
+        <!-- </div> -->
+
+        <div class="col-sm-5">
+        <h4> Available Airplanes </h4>
+            <?php
+                    $url = "https://tabaswebapi.azurewebsites.net/getavion";
+
+                    $eljson = file_get_contents($url);
+
+
+                    $array = json_decode($eljson, true);
+                    $index = 0;
+ 
+             
+                    while($index < sizeof($array))
+                    {
+                        echo '<div class="container" style="background-color:#444444; margin-bottom: 10px; padding: 5px;">';
+                        echo "ID: ". $array[$index]['tid'] ."<br>";
+                        echo "Model: ". $array[$index]['tmodelo'] ."<br>";
+                        echo "Capacity: ". $array[$index]['tcapacidad'] ." (sections)<br>";
+                        echo "</div>";
+
+                        $index ++;
+                    }
+                    
+            ?>  
+
+
+            <h4> Available Flight Stops </h4>
+            <?php
+                    $url = "https://tabaswebapi.azurewebsites.net/getescala";
+
+                    $eljson = file_get_contents($url);
+
+
+                    $array = json_decode($eljson, true);
+                    $index = 0;
+ 
+             
+                    while($index < sizeof($array))
+                    {
+                        echo '<div class="container" style="background-color:#444444; margin-bottom: 10px; padding: 5px;">';
+                        //echo "Num: ". $array[$index]['Numero'] ."<br>";
+                        echo "Flight ID: ". $array[$index]['VueloID'] ."<br>";
+                        echo "Plane ID: ". $array[$index]['AvionID'] ."<br>";
+                        echo "Departure/Arrival: ". $array[$index]['ASalida'] ."/".$array[$index]['ALlegada'] ."<br>";
+                        //echo "Arrival: ". $array[$index]['ALlegada'] ."<br>";
+                        //echo "Miles: ". $array[$index]['Millas'] ."<br>";
+                        echo "Departure Date: ". $array[$index]['FSalida'] ."<br>";
+                        echo "Arrival Date: ". $array[$index]['FLlegada'] ."<br>";
+
+                        
+                        echo "</div>";
+
+                        $index ++;
+                    }
+                    
+            ?> 
+
+        </div>    
+                   
+        <div class="col-sm-3">
+            <h4> Available Flights </h4>
+            <?php
+                    $url = "https://tabaswebapi.azurewebsites.net/getvuelo";
+
+                    $eljson = file_get_contents($url);
+
+
+                    $array = json_decode($eljson, true);
+                    $index = 0;
+ 
+             
+                    while($index < sizeof($array))
+                    {
+                        echo '<div class="container" style="background-color:#444444; margin-bottom: 10px; padding: 5px;">';
+                        echo "Flight ID: ". $array[$index]['tid'] ."<br>";
+                        echo "Cost: ". $array[$index]['tprecio'] ."$<br>";
+                        echo "</div>";
+
+                        $index ++;
+                    }
+                    
+            ?>        
+                
+                
+            
+
+            <!-- <div>
+                <form method="POST" action="mainpage.php">
+                    <button type="submit" class="btn btn-info" name="get"> GET </button>
+                    <?php
+                
+
+
+                    ?>
+                </form>
+            </div> -->
+
+        </div>
     </div>
-</div> 
+
+    
+
+</div>                 
+
+
+
+<br><br><br><br><br>
+</div>
+
+
+
+
+
+
+
 
 
 

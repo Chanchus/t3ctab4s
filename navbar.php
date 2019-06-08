@@ -18,12 +18,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="mainpage.php">Home </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
-            </li>
+            </li> -->
             <li class="nav-item">
                 <a class="nav-link" href="logout.php">Log Out</a>
             </li>
