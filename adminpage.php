@@ -51,9 +51,9 @@
     <br><br>
 
     <div class="row">
-        <a href="createuser.php" class="btn btn-info btn-lg" id="menubtn"> New User</a>
+        <a href="createuser.php" class="btn btn-info btn-lg" id="menubtn"> Register User</a>
         
-        <a href="#" class="btn btn-light btn-lg" id="menubtn"> New User</a>
+        <!-- <a href="#" class="btn btn-light btn-lg" id="menubtn"> New User</a> -->
         
     </div>
 
@@ -192,35 +192,16 @@
                 
             
 
-            <div>
+            <!-- <div>
                 <form method="POST" action="mainpage.php">
                     <button type="submit" class="btn btn-info" name="get"> GET </button>
                     <?php
-                        if (isset($_POST['get'])){
-                            if($_POST['get']){
-
-
-                            $url = "https://tabaswebapi.azurewebsites.net/getvalue/1";
-
-                            $eljson = file_get_contents($url);
-
-
-                            $array = json_decode($eljson, true);
-
-                            echo $array['Name'] ."<br>";
-                            echo $array['Email'] ."<br>";
-                            echo $array['Password'] ."<br>";
-                            echo $array['Department'] ."<br>";
-
-
-                        }
-                    }
-
+                
 
 
                     ?>
                 </form>
-            </div>
+            </div> -->
 
         </div>
     </div>
