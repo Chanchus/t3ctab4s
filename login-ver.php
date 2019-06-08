@@ -32,11 +32,20 @@ if (isset($_POST['login-submit']))
 
         if($array != NULL)
         {
-            session_start();
-            $_SESSION["userID"] = $array['tced']; 
-            $_SESSION["dept"] = $array['trol']; 
 
-            header("Location: mainpage.php");
+            if($array['tpass'] == $password)
+            {
+                session_start();
+                $_SESSION["userID"] = $array['tced']; 
+                $_SESSION["dept"] = $array['trol']; 
+
+                header("Location: mainpage.php");
+            }
+            else{
+                header("Location: login.php?error=nouser");
+                exit();
+            }
+            
         }
         else{
             header("Location: login.php?error=nouser");
