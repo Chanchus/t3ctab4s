@@ -24,10 +24,10 @@ if (isset($_POST['login-submit']))
         
         $url = "https://tabaswebapi.azurewebsites.net/getempleado/".$userID;
 
-        $eljson = file_get_contents($url);
+        //$eljson = file_get_contents($url);
 
 
-        $array = json_decode($eljson, true);
+        //$array = json_decode($eljson, true);
         
 
         if(true)
