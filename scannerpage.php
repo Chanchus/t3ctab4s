@@ -62,5 +62,5 @@ function openQRCamera(node) {
         </label>
         
 
-    <br>
+    <br><br><br><br>
 </div>

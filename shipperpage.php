@@ -24,3 +24,23 @@
 
     <br>
 </div>
+
+
+<div class="container" style="margin-top:20px;">
+
+    <br>
+        <h2> QR Code Scanner </h2>
+  
+
+        <input type=text class=qrcode-text>
+        <label class="btn btn-light">
+        <input type=file
+                accept="image/*"
+                capture=environment
+                onchange="openQRCamera(this);"
+                tabindex=-1>
+        </label>
+        
+
+    <br><br><br><br>
+</div>

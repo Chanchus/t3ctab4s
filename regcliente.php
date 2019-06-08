@@ -17,7 +17,7 @@ if (isset($_POST['client-submit']))
 
     if(empty($name) || empty($phone) || empty($email) || empty($passport) || empty($password))
     {
-        header("Location: createcliente.php?error=emptyfields");
+        header("Location: createclient.php?error=emptyfields");
         exit();
     }
     else{
@@ -66,7 +66,7 @@ if (isset($_POST['client-submit']))
 
         else {
 
-            header("Location: createcliente.php?error=useralreadyexists");
+            header("Location: createclient.php?error=useralreadyexists");
             exit();
         }
         
