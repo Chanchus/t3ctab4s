@@ -1,6 +1,6 @@
 <?php
 
-
+require 'connect.php';
 
 if (isset($_POST['login-submit']))
 {
@@ -22,19 +22,19 @@ if (isset($_POST['login-submit']))
     {
         
         
-        //$url = "https://tabaswebapi.azurewebsites.net/getempleado/".$userID;
+        $url = "https://tabaswebapi.azurewebsites.net/getempleado/".$userID;
 
-        //$eljson = file_get_contents($url);
+        $eljson = file_get_contents($url);
 
 
-        //$array = json_decode($eljson, true);
+        $array = json_decode($eljson, true);
         
 
-        if(true)
+        if($array != NULL)
         {
             session_start();
-            $_SESSION["userID"] = "usuarioprueba"; 
-            $_SESSION["dept"] = 4; 
+            $_SESSION["userID"] = $array['tced']; 
+            $_SESSION["dept"] = $array['trol']; 
 
             header("Location: mainpage.php");
         }
