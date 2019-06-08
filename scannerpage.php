@@ -53,7 +53,7 @@ function openQRCamera(node) {
   
 
         <input type=text class=qrcode-text>
-        <label class=qrcode-text-btn>
+        <label class="btn btn-light">
         <input type=file
                 accept="image/*"
                 capture=environment
