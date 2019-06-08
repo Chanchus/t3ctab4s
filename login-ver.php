@@ -22,7 +22,7 @@ if (isset($_POST['login-submit']))
     {
         
         
-        $url = "https://tabaswebapi.azurewebsites.net/getempleado/".$userID;
+        //$url = "https://tabaswebapi.azurewebsites.net/getempleado/".$userID;
 
         //$eljson = file_get_contents($url);
 
