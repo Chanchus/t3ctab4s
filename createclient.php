@@ -5,7 +5,7 @@ if (!(isset($_SESSION["userID"])))
         header("Location: login.php");
     }
 
-if ($_SESSION["dept"]!="4")
+if ($_SESSION["dept"]!="3")
     {
         header("Location: mainpage.php");
     }   
