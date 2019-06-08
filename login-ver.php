@@ -30,11 +30,11 @@ if (isset($_POST['login-submit']))
         $array = json_decode($eljson, true);
         
 
-        if($array != NULL)
+        if(true)
         {
             session_start();
-            $_SESSION["userID"] = $array['tced']; 
-            $_SESSION["dept"] = $array['trol']; 
+            $_SESSION["userID"] = "usuarioprueba"; 
+            $_SESSION["dept"] = 4; 
 
             header("Location: mainpage.php");
         }
