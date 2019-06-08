@@ -2,7 +2,8 @@
 
 
 
-
+<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js">
+</script>
 
 <div style="height:10px"> </div>
 
